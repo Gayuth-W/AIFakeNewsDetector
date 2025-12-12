@@ -15,7 +15,7 @@ def initialize_database():
     conn = get_db_connection()
     cursor = conn.cursor()
 
-    # Chat session logs table
+    #chat session logs table
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS application_logs (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -27,7 +27,7 @@ def initialize_database():
         );
     ''')
 
-    # Metadata for uploaded documents
+    #metadata for uploaded documents
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS document_store (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -72,3 +72,48 @@ def get_chat_history(session_id):
       messages.append({"role": "ai", "content": row["gpt_response"]})
 
   return messages
+
+def insert_document_record(filename):
+  conn = get_db_connection()
+  cursor = conn.cursor()
+
+  cursor.execute(
+      '''
+      INSERT INTO document_store (filename)
+      VALUES (?)
+      ''',
+      (filename,)
+  )
+  file_id = cursor.lastrowid
+
+  conn.commit()
+  conn.close()
+
+  return file_id
+
+def delete_document_record(file_id):
+  conn = get_db_connection()
+  conn.execute(
+      '''
+      DELETE FROM document_store
+      WHERE id = ?
+      ''',
+      (file_id,)
+  )
+  conn.commit()
+  conn.close()
+  
+def get_all_documents():
+  conn = get_db_connection()
+  cursor = conn.cursor()
+
+  cursor.execute('''
+      SELECT id, filename, upload_timestamp
+      FROM document_store
+      ORDER BY upload_timestamp DESC
+  ''')
+
+  documents = cursor.fetchall()
+  conn.close()
+
+  return [dict(doc) for doc in documents]
