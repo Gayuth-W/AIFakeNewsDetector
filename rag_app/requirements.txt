@@ -1,0 +1,15 @@
+fastapi
+uvicorn[standard]
+langchain
+langchain-openai
+langchain-community
+chromadb
+python-dotenv
+python-multipart
+pydantic
+requests
+beautifulsoup4
+docx2txt
+unstructured
+python-docx
+openai
