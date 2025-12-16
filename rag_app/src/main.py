@@ -1,9 +1,12 @@
 from typing import Optional, Dict, List
 from fastapi import FastAPI
 from pydantic import BaseModel
-import uuid
 import logging
-from utils.session_utils import get_or_create_session, add_message
+from rag_app.src.utils.session_utils import (
+    get_or_create_session,
+    add_message,
+    get_session_history
+)
 
 logging.basicConfig(filename="app.log", level=logging.INFO)
 
@@ -29,6 +32,9 @@ async def chat(query_input: QueryInput):
 
     # AI message
     add_message(session_id, "ai", ai_response)
+    
+    # this will get the full sesion history
+    history = get_session_history(session_id)    
 
     return {
         "session_id": session_id,

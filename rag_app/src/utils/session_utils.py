@@ -2,7 +2,7 @@ import uuid
 
 _sessions={}
 
-def get_or_create(session_id: str | None):
+def get_or_create_session(session_id: str | None):
   if session_id and session_id in _sessions:
     return session_id, _sessions[session_id]
   
