@@ -1,6 +1,7 @@
 import uuid
+from typing import Dict, List
 
-_sessions={}
+_sessions: Dict[str, List[Dict[str, str]]] = {}
 
 def get_or_create_session(session_id: str | None):
   if session_id and session_id in _sessions:

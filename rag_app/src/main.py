@@ -1,5 +1,5 @@
 from typing import Optional, Dict, List
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import logging
 from rag_app.src.utils.session_utils import (
@@ -11,9 +11,6 @@ from rag_app.src.utils.session_utils import (
 logging.basicConfig(filename="app.log", level=logging.INFO)
 
 app = FastAPI(title="AI Fake News Detector")
-
-# this is an in memory store for chat sessions
-chat_sessions: Dict[str, List[Dict[str, str]]] = {}
 
 class QueryInput(BaseModel):
     question: str
@@ -40,4 +37,20 @@ async def chat(query_input: QueryInput):
         "session_id": session_id,
         "answer": ai_response,
         "history_length": len(history)
+    }
+    
+@app.get("/session/{session_id}")   
+async def get_session(session_id: str):
+    history=get_session_history(session_id)
+    
+    if not history:
+        raise HTTPException(
+            status_code=400,
+            detai="The relavant session is not found or has no message"
+        )
+    
+    return{
+        "session_id":session_id,
+        "messages":history,
+        "message_count":len(history)
     }
