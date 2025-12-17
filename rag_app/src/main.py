@@ -5,7 +5,8 @@ from typing import Optional
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import logging
-
+from rag_app.src.db.cleanup import cleanup_expired_sessions
+import asyncio
 from rag_app.src.core.llm import generate_response
 from rag_app.src.utils.session_utils import (
     get_or_create_session,
@@ -21,6 +22,20 @@ class QueryInput(BaseModel):
     question: str
     session_id: Optional[str] = None
     model: str = "gpt-4o-mini"
+
+
+CLEANUP_INTERVAL = 60 * 60  # seconds, e.g., 1 hour
+
+async def periodic_cleanup():
+    while True:
+        cleanup_expired_sessions(ttl_hours=24)
+        await asyncio.sleep(CLEANUP_INTERVAL)
+
+@app.on_event("startup")
+async def startup_event():
+    # Start the cleanup loop
+    asyncio.create_task(periodic_cleanup())
+
 
 @app.post("/chat")
 async def chat(query_input: QueryInput):
