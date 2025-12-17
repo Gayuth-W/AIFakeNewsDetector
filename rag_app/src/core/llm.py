@@ -1,10 +1,11 @@
 import os
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 from openai import AsyncOpenAI
 from typing import List, Dict
+from pathlib import Path
 
-load_dotenv()
-# print("API Key:", os.getenv("OPENAI_API_KEY"))
+env_path = Path(__file__).resolve().parent.parent.parent / '.env'
+load_dotenv(dotenv_path=env_path)
 client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 async def generate_response(messages: List[Dict[str, str]]) -> str:
