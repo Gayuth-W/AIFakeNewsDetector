@@ -19,18 +19,12 @@ def convert_messages(messages: List[Dict[str, str]]) -> List[Dict[str, str]]:
     for message in messages:
         role = message.get("role")
         content = message.get("content")
-        if not isinstance(content, str):
-            content = str(content)  # ensure it's a string
-
         if role == "user":
-            lc_messages.append(HumanMessage(content=content))
+            lc_messages.append({"type": "human", "text": content})
         elif role == "assistant":
-            lc_messages.append(AIMessage(content=content))
+            lc_messages.append({"type": "ai", "text": content})
         elif role == "system":
-            lc_messages.append(SystemMessage(content=content))
-        else:
-            # fallback for unknown roles
-            lc_messages.append(HumanMessage(content=content))
+            lc_messages.append({"type": "system", "text": content})
     return lc_messages
 
 async def generate_response(messages: List[Dict[str, str]]) -> str:
