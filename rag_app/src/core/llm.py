@@ -3,6 +3,7 @@ from dotenv import load_dotenv, find_dotenv
 from typing import List, Dict
 from pathlib import Path
 from langchain_community.chat_models import ChatOllama
+from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
 
 env_path = Path(__file__).resolve().parent.parent.parent / '.env'
 load_dotenv(dotenv_path=env_path)
@@ -29,4 +30,4 @@ def convert_messages(messages: List[Dict[str, str]]) -> List[Dict[str, str]]:
 async def generate_response(messages: List[Dict[str, str]]) -> str:
     lc_messages=convert_messages(messages)
     response = await llm.agenerate([lc_messages])
-    return response.content
+    return response.generations[0][0].text
