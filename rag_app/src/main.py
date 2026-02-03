@@ -21,7 +21,7 @@ app = FastAPI(title="AI Fake News Detector")
 class QueryInput(BaseModel):
     question: str
     session_id: Optional[str] = None
-    model: str = "gpt-4o-mini"
+    model: str = "gemma3:1b"
 
 
 CLEANUP_INTERVAL = 60 * 60  # seconds, e.g., 1 hour
