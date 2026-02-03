@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 load_dotenv()
-
+from rag_app.src.rag.rag_pipeline import retrieve_context
 from typing import Optional
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
@@ -47,7 +47,16 @@ async def chat(query_input: QueryInput):
     # Fetch full session history from DB
     history = get_session_history(session_id)
 
-    messages = [{"role": "system", "content": "You are a factual assistant."}]
+    context = retrieve_context(query_input.question)
+
+    system_prompt = (
+        "You are a factual assistant.\n\n"
+        "Use the following verified information to answer if relevant.\n"
+        "If the information is not relevant, answer normally.\n\n"
+        f"Context:\n{context}"
+    )
+
+    messages = [{"role": "system", "content": system_prompt}]
     messages.extend(history)
     messages.append({"role": "user", "content": query_input.question})
 

@@ -2,8 +2,10 @@ import chromadb
 from chromadb.config import Settings
 from pathlib import Path
 
-BASE_DIR = Path(__file__).parent.parent
+BASE_DIR = Path(__file__).parent.parent.parent
 CHROMA_DIR = BASE_DIR / "chroma_db"
+CHROMA_DIR.mkdir(parents=True, exist_ok=True)
+
 
 client = chromadb.Client(
     Settings(
