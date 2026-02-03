@@ -26,7 +26,7 @@ class QueryInput(BaseModel):
 
 CLEANUP_INTERVAL = 60 * 60  # seconds, e.g., 1 hour
 
-async def periodic_cleanup():
+async def periodic_cleanup():   
     while True:
         cleanup_expired_sessions(ttl_hours=24)
         await asyncio.sleep(CLEANUP_INTERVAL)
@@ -89,3 +89,7 @@ async def get_session(session_id: str):
         "messages": history,
         "message_count": len(history)
     }
+    
+@app.get("/")
+def root():
+    return {"status": "ok"}
