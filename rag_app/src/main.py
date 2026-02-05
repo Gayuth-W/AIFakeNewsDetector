@@ -13,6 +13,7 @@ from rag_app.src.utils.session_utils import (
     add_message,
     get_session_history
 )
+from rag_app.src.api.routes import router
 
 logging.basicConfig(filename="app.log", level=logging.INFO)
 
@@ -93,3 +94,5 @@ async def get_session(session_id: str):
 @app.get("/")
 def root():
     return {"status": "ok"}
+
+app.include_router(router)
