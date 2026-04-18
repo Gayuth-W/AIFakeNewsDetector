@@ -1,0 +1,20 @@
+# Verified facts for the RAG knowledge base (one fact per line)
+# Lines starting with # are ignored
+
+The World Health Organization has stated that vaccines do not cause autism.
+Climate change is primarily driven by human activities such as burning fossil fuels.
+There is no scientific evidence supporting the claim that 5G spreads COVID-19.
+Drinking bleach does not cure COVID-19 and is extremely dangerous.
+The Earth is approximately 4.5 billion years old, supported by radiometric dating.
+Human activity is the primary driver of recent global temperature increases.
+Face masks help reduce the spread of respiratory viruses including COVID-19.
+The moon landing in 1969 was real and has been independently verified by multiple sources.
+Flu vaccines cannot give you the flu; they contain inactivated or weakened virus particles.
+Chemtrails are a conspiracy theory; contrails are normal water vapor from aircraft engines.
+There is no credible evidence that microchips are implanted through COVID-19 vaccines.
+Hydroxychloroquine is not a proven cure for COVID-19 according to major health authorities.
+Wind turbine noise does not cause cancer; this claim has been repeatedly debunked.
+Election fraud claims require verifiable evidence; widespread fraud in US elections has been disproven by audits.
+Evolution is supported by extensive fossil, genetic, and observational evidence.
+Antibiotics treat bacterial infections, not viral infections like the common cold.
+Global vaccination programs have dramatically reduced deaths from diseases like measles and polio.

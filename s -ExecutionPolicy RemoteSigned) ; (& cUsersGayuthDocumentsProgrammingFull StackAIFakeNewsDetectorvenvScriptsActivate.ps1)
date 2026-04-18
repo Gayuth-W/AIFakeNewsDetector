@@ -1,0 +1,281 @@
+[33mcommit b501d50aa7d2ed8eced2325778457972a6b5d6e1[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mMain[m[33m)[m
+Author: IT24104152 <gayuthdemika@gmail.com>
+Date:   Sat Apr 12 13:05:31 2025 +0530
+
+    fix: changes to the routing
+
+[33mcommit 5bb8045d14e950bbdea270a4e115b84e81324082[m
+Author: IT24104152 <gayuthdemika@gmail.com>
+Date:   Thu Feb 5 19:12:18 2026 +0530
+
+    feat: web scraping enables
+
+[33mcommit 03abd9815be31b4abdbb6c6c5936784dede8186a[m[33m ([m[1;31morigin/feature/web-scraping[m[33m)[m
+Merge: 212c6d9 974f123
+Author: Gayuth Waidyaratne <gayuthdemika@gmail.com>
+Date:   Tue Feb 3 16:41:37 2026 +0530
+
+    Merge pull request #13 from Gayuth-W/feature/rag
+    
+    fix: the chat api
+
+[33mcommit 974f1234f9bfa6e963ef7e347de886858633e7d1[m[33m ([m[1;31morigin/feature/rag[m[33m, [m[1;32mfeature/rag[m[33m)[m
+Merge: 04516f6 1076a27
+Author: IT24104152 <gayuthdemika@gmail.com>
+Date:   Tue Feb 3 16:41:18 2026 +0530
+
+    merge Main into feature/rag
+
+[33mcommit 04516f6b955185479f894ed0a3c4f6e355125cc1[m
+Author: IT24104152 <gayuthdemika@gmail.com>
+Date:   Tue Feb 3 16:36:47 2026 +0530
+
+    chore: ignore SQLite database files
+
+[33mcommit 212c6d92b92e8e4f2644cd81636fc7a6232f63b2[m
+Merge: 87e8e24 c4d98cc
+Author: Gayuth Waidyaratne <gayuthdemika@gmail.com>
+Date:   Tue Feb 3 16:30:33 2026 +0530
+
+    Merge pull request #12 from Gayuth-W/feature/chat-session-handling
+    
+    feat: running a local model
+
+[33mcommit c4d98cc4a41a99cf319a99f5beeb7c7fb34d0050[m[33m ([m[1;31morigin/feature/chat-session-handling[m[33m)[m
+Merge: 3815912 87e8e24
+Author: Gayuth Waidyaratne <gayuthdemika@gmail.com>
+Date:   Tue Feb 3 16:29:35 2026 +0530
+
+    Merge branch 'Main' into feature/chat-session-handling
+
+[33mcommit 3815912484a593fe2db391e90121a5aad6beb63e[m[33m ([m[1;32mfeature/chat-session-handling[m[33m)[m
+Merge: fa66a41 1076a27
+Author: IT24104152 <gayuthdemika@gmail.com>
+Date:   Tue Feb 3 16:25:01 2026 +0530
+
+    merge Main into feature/chat-session-handling
+
+[33mcommit 1076a27530e610827a80da3169666dd253da18c4[m
+Author: IT24104152 <gayuthdemika@gmail.com>
+Date:   Tue Feb 3 16:15:49 2026 +0530
+
+    fix: the chat generating issue
+
+[33mcommit fa66a416c5af7f3f72eeeaef39c22e7831df74e7[m
+Author: IT24104152 <gayuthdemika@gmail.com>
+Date:   Tue Feb 3 16:11:46 2026 +0530
+
+    feat: running a local model
+
+[33mcommit 9aedc16c326186b58811102b13aef3bce781a51d[m
+Author: IT24104152 <gayuthdemika@gmail.com>
+Date:   Mon Feb 2 17:34:41 2026 +0530
+
+    fix: the chat api
+
+[33mcommit 87e8e247c6aaebc2aa2897c744efe59560f3f7c7[m
+Merge: 353e186 f53ce81
+Author: Gayuth Waidyaratne <gayuthdemika@gmail.com>
+Date:   Thu Jan 29 17:45:40 2026 +0530
+
+    Merge pull request #11 from Gayuth-W/main
+    
+    Fix: Not using ChatOllama
+
+[33mcommit f53ce8140867b790417b6d640ed1decaef8d8d55[m
+Author: IT24104152 <gayuthdemika@gmail.com>
+Date:   Thu Jan 29 17:41:08 2026 +0530
+
+    feat: local llm is now running
+
+[33mcommit 5c4ddb198425be0352254cc29b39a603b15b0958[m
+Author: IT24104152 <gayuthdemika@gmail.com>
+Date:   Thu Jan 29 17:26:14 2026 +0530
+
+    feat: new requirements.txt
+
+[33mcommit 353e186775653b1523fa11b86a12553d46540778[m
+Merge: 78b99ae c68e0de
+Author: Gayuth Waidyaratne <gayuthdemika@gmail.com>
+Date:   Sat Dec 20 22:21:48 2025 +0530
+
+    Merge pull request #9 from Gayuth-W/feature/rag
+    
+    feat: RAG generating successfully
+
+[33mcommit c68e0de5b92fe80150c98785a7e1d423b23559e6[m
+Author: Gayuth-W <gayuthdemika@gmail.com>
+Date:   Sat Dec 20 22:17:17 2025 +0530
+
+    feat: RAG generating successfully
+
+[33mcommit 78b99ae514cee392bb5f02d34cc3dc3f387409e8[m
+Merge: 8204bc4 000fb5d
+Author: Gayuth Waidyaratne <gayuthdemika@gmail.com>
+Date:   Thu Dec 18 22:29:15 2025 +0530
+
+    Merge pull request #8 from Gayuth-W/feature/chat-session-handling
+    
+    feat: vector embeddings
+
+[33mcommit 000fb5d653907ff78ab3471fec39512a4a5b5316[m
+Author: Gayuth-W <gayuthdemika@gmail.com>
+Date:   Thu Dec 18 22:28:29 2025 +0530
+
+    feat: vector embeddings
+
+[33mcommit 8204bc4769c365ad25e558b17ec46333b1793cd0[m
+Merge: f50ab42 730e3fa
+Author: Gayuth Waidyaratne <gayuthdemika@gmail.com>
+Date:   Wed Dec 17 14:59:08 2025 +0530
+
+    Merge pull request #7 from Gayuth-W/feature/chat-session-handling
+    
+    Feature/chat session handling
+
+[33mcommit 730e3fa897040f2878efccac1b22b5edfb925206[m
+Author: Gayuth-W <gayuthdemika@gmail.com>
+Date:   Wed Dec 17 14:57:48 2025 +0530
+
+    feat: cleanup of sessions after 24 hrs feature
+
+[33mcommit 58d2b3c9fff4bacc0bdf62085f25314285483e1b[m
+Author: Gayuth-W <gayuthdemika@gmail.com>
+Date:   Wed Dec 17 14:39:51 2025 +0530
+
+    fix: .env file path error
+
+[33mcommit 0e181ac310a624c66360fb93642e3478c632e694[m
+Author: Gayuth-W <gayuthdemika@gmail.com>
+Date:   Wed Dec 17 14:32:46 2025 +0530
+
+    feat: SQLite db connection successfull
+
+[33mcommit 192b278d1f9f4750a8002fb3ebb5045cf116d3e6[m
+Author: Gayuth-W <gayuthdemika@gmail.com>
+Date:   Tue Dec 16 13:22:37 2025 +0530
+
+    feat: communicate with the AI with chat history
+
+[33mcommit f50ab421f48f2a980caee3a3fac54590e9650a60[m
+Merge: 47fe118 aba31bc
+Author: Gayuth Waidyaratne <gayuthdemika@gmail.com>
+Date:   Tue Dec 16 12:25:00 2025 +0530
+
+    Merge pull request #6 from Gayuth-W/feature/chat-session-handling
+    
+    Feature/chat session handling
+
+[33mcommit aba31bc71733e17575a948c65020d3371b5ed362[m
+Author: Gayuth-W <gayuthdemika@gmail.com>
+Date:   Tue Dec 16 12:12:59 2025 +0530
+
+    feat: getting session id and history successfully tested in postman
+
+[33mcommit d2fb4a31cb8db4cc2eb9c13b187c6c1ca88d8323[m
+Author: Gayuth-W <gayuthdemika@gmail.com>
+Date:   Tue Dec 16 11:54:05 2025 +0530
+
+    fix: Now it succesfully tests in postman
+
+[33mcommit 47fe118221e595758452719a83646b74dd0a5006[m
+Merge: 0044339 38f0577
+Author: Gayuth Waidyaratne <gayuthdemika@gmail.com>
+Date:   Mon Dec 15 22:32:43 2025 +0530
+
+    Merge pull request #5 from Gayuth-W/feature/chat-session-handling
+    
+    feat: added the session_utils.py file for proper user session management
+
+[33mcommit 38f0577230a1cf8a474fb85003e36aea671fef2d[m
+Author: Gayuth-W <gayuthdemika@gmail.com>
+Date:   Mon Dec 15 22:30:20 2025 +0530
+
+    feat: added the session_utils.py file for proper user session management
+
+[33mcommit 0044339cd45aa2e4f4c830b5a8dc0f299d602991[m
+Merge: fe064e4 d1965df
+Author: Gayuth Waidyaratne <gayuthdemika@gmail.com>
+Date:   Sat Dec 13 16:44:29 2025 +0530
+
+    Merge pull request #4 from Gayuth-W/feature/chat-session-handling
+    
+    Feature/chat session handling
+
+[33mcommit d1965df4ac089f1f935314bf5c1995325765a8c0[m
+Author: Gayuth-W <gayuthdemika@gmail.com>
+Date:   Sat Dec 13 16:43:00 2025 +0530
+
+    feat: added the user sessions and the chat history
+
+[33mcommit 9fb9663b9af39ece7ce5fdb227f68978da412a83[m
+Author: Gayuth-W <gayuthdemika@gmail.com>
+Date:   Sat Dec 13 16:23:01 2025 +0530
+
+    feat: created enpoints for chating
+
+[33mcommit fe064e448db0584da691baeed78c3243a9f9294e[m
+Merge: 9126794 1ad6a21
+Author: Gayuth Waidyaratne <gayuthdemika@gmail.com>
+Date:   Fri Dec 12 16:23:56 2025 +0530
+
+    Merge pull request #3 from Gayuth-W/main
+    
+    Main
+
+[33mcommit 1ad6a21fab3c5146e724fc312a77b7288385ce04[m
+Author: Gayuth-W <gayuthdemika@gmail.com>
+Date:   Fri Dec 12 16:14:29 2025 +0530
+
+    feat: fixed the structure for the FAST API framework
+
+[33mcommit 52bc383e6695d84a4f2df04e1e4b05be86bc5ea6[m
+Author: Gayuth-W <gayuthdemika@gmail.com>
+Date:   Fri Dec 12 15:11:53 2025 +0530
+
+    feat: added the functions to store and delete document stores
+
+[33mcommit 5adab626c4cbd44527854214afc2db3b29ab5006[m
+Author: Gayuth-W <gayuthdemika@gmail.com>
+Date:   Fri Dec 12 15:04:15 2025 +0530
+
+    feat: added the chatlog functions
+
+[33mcommit bffb26c973c2bc432182799f9f349b89731baa3b[m
+Author: Gayuth-W <gayuthdemika@gmail.com>
+Date:   Fri Dec 12 13:30:43 2025 +0530
+
+    feat: connection establishment with sqlite
+
+[33mcommit a9afcf7cd965244073fc94fdd49407d78cd4046a[m
+Author: Gayuth-W <gayuthdemika@gmail.com>
+Date:   Wed Dec 10 17:02:28 2025 +0530
+
+    feat: folder structure
+
+[33mcommit 91267945f2abd7e76d61c5f5fe38ead937a45c5b[m
+Merge: e423377 d77ae85
+Author: Gayuth Waidyaratne <gayuthdemika@gmail.com>
+Date:   Sun Dec 7 22:10:52 2025 +0530
+
+    Merge pull request #1 from Gayuth-W/main
+    
+    Main
+
+[33mcommit d77ae85a28211634347ba9537a88a85238977282[m
+Author: Gayuth-W <gayuthdemika@gmail.com>
+Date:   Sun Dec 7 22:09:12 2025 +0530
+
+    feat: rag chat bot notebook
+
+[33mcommit db3960fcd15b7d9d2cb31b9981ab073b8cea1ad7[m
+Author: Gayuth-W <gayuthdemika@gmail.com>
+Date:   Sun Dec 7 22:02:37 2025 +0530
+
+    Add .gitignore to ignore sensitive files and build artifacts
+
+[33mcommit e4233779452a9a59850a615be7c8c1242f4f34b3[m
+Author: Gayuth-W <gayuthdemika@gmail.com>
+Date:   Fri Dec 5 21:40:30 2025 +0530
+
+    Initial clean commit
