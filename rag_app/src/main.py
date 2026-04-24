@@ -1,40 +1,56 @@
-from dotenv import load_dotenv
-load_dotenv()
-from rag_app.src.rag.rag_pipeline import retrieve_context
-from typing import Optional
-from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
-import logging
-from rag_app.src.db.cleanup import cleanup_expired_sessions
 import asyncio
-from rag_app.src.core.llm import generate_response
-from rag_app.src.utils.session_utils import (
-    get_or_create_session,
-    add_message,
-    get_session_history
-)
+import logging
+from typing import Optional
+
+from dotenv import load_dotenv
+from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+
+load_dotenv()
+
 from rag_app.src.api.routes import router
+from rag_app.src.core.llm import OLLAMA_MODEL, generate_response
+from rag_app.src.db.cleanup import cleanup_expired_sessions
+from rag_app.src.db.db import init_db
+from rag_app.src.rag.rag_pipeline import retrieve_context
+from rag_app.src.utils.session_utils import (
+    add_message,
+    get_or_create_session,
+    get_session_history,
+)
 
 logging.basicConfig(filename="app.log", level=logging.INFO)
 
 app = FastAPI(title="AI Fake News Detector")
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
 class QueryInput(BaseModel):
     question: str
     session_id: Optional[str] = None
-    model: str = "gemma3:1b"
+    model: str = OLLAMA_MODEL
 
 
-CLEANUP_INTERVAL = 60 * 60  # seconds, e.g., 1 hour
+CLEANUP_INTERVAL = 60 * 60
 
-async def periodic_cleanup():   
+
+async def periodic_cleanup():
     while True:
-        cleanup_expired_sessions(ttl_hours=24)
+        cleanup_expired_sessions()
         await asyncio.sleep(CLEANUP_INTERVAL)
+
 
 @app.on_event("startup")
 async def startup_event():
-    # Start the cleanup loop
+    init_db()
     asyncio.create_task(periodic_cleanup())
 
 
@@ -42,29 +58,25 @@ async def startup_event():
 async def chat(query_input: QueryInput):
     session_id, _ = get_or_create_session(query_input.session_id)
 
-    # Store user message in DB
     add_message(session_id, "user", query_input.question)
 
-    # Fetch full session history from DB
     history = get_session_history(session_id)
+    context, sources = retrieve_context(query_input.question)
 
-    context = retrieve_context(query_input.question)
+    context_block = context if context else "No matching verified facts found."
 
     system_prompt = (
         "You are a factual assistant.\n\n"
         "Use the following verified information to answer if relevant.\n"
         "If the information is not relevant, answer normally.\n\n"
-        f"Context:\n{context}"
+        f"Context:\n{context_block}"
     )
 
     messages = [{"role": "system", "content": system_prompt}]
     messages.extend(history)
-    messages.append({"role": "user", "content": query_input.question})
 
-    # Get AI response
-    ai_response = await generate_response(messages)
+    ai_response = await generate_response(messages, model=query_input.model)
 
-    # Store AI response in DB
     add_message(session_id, "assistant", ai_response)
 
     final_history = get_session_history(session_id)
@@ -72,8 +84,10 @@ async def chat(query_input: QueryInput):
     return {
         "session_id": session_id,
         "answer": ai_response,
-        "history_length": len(final_history)
+        "sources": sources,
+        "history_length": len(final_history),
     }
+
 
 @app.get("/session/{session_id}")
 async def get_session(session_id: str):
@@ -82,17 +96,19 @@ async def get_session(session_id: str):
     if not history:
         raise HTTPException(
             status_code=404,
-            detail="The relevant session was not found or has no messages"
+            detail="The relevant session was not found or has no messages",
         )
 
     return {
         "session_id": session_id,
         "messages": history,
-        "message_count": len(history)
+        "message_count": len(history),
     }
-    
+
+
 @app.get("/")
 def root():
     return {"status": "ok"}
+
 
 app.include_router(router)
